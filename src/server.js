@@ -1,9 +1,10 @@
 const express = require('express');
 const path = require('path');
 
+const app = express();
 const db = require('./config/db');
 const ConfigView = require('./config/configView');
-const app = express();
+const Router = require('./router');
 
 //config db
 db.Connect();
@@ -12,9 +13,11 @@ db.Connect();
 ConfigView(app);
 app.set("views", path.join(__dirname, "views")); // mặc định vào views để tìm file hiển thị client
 
-app.get('/', (req, res) => {
-  res.render('home')
-});
+//config static file
+app.use(express.static(path.join(__dirname, 'public')));
+
+//config router
+Router(app);
 
 
 // port
