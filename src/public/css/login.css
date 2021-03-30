@@ -359,7 +359,7 @@ iframe {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
-  display: -ms-flexbox;
+  display: -ms-flexbox; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -474,3 +474,30 @@ iframe {
     padding-right: 15px;
   }
 } 
+/* OPEN APP */
+.title-app {
+  width: 100%;
+  text-align: center;
+}
+.information-app {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+.button-login-register {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.btn-app{
+  font-family: Poppins-Medium;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  height: 50px;
+  border-radius: 20px;
+}
