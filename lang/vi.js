@@ -3,14 +3,19 @@ let transValidation = {
     user_incorrect : "Tên đăng nhập phải ít nhất 3 kí tự, bao gồm chữ hoa, chữ thường, chữ số.",
     password_incorrect : "Mật khẩu phải ít nhất 6 ký  tự, bao gồm chữ hoa, chữ thường, chữ số và ký tự đặc biệt.",
     re_password_incorrect : "Mật khẩu nhập lại chưa chính xác.",
+}
+
+let transError = {
     account_in_use : "Email đã được sử dụng.",
     login_failed : "Email hoặc mật khẩu không chính xác.",
     server_errors : "Có lỗi ở phía Server.",
+}
 
+let transSuccess = {
     registration_success : "Chúc mừng bạn đã đăng kí thành công."
 }
 
-module.exports = { transValidation };
+module.exports = { transValidation, transError, transSuccess};
 
 
 
