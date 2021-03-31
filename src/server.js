@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
+require('dotenv').config();
 
 const app = express();
 
@@ -43,7 +44,7 @@ app.use(flash());
 Route(app);
 
 // port
-app.listen(3000, () => {
-  console.log('Server is running on port:3000!');
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port:${process.env.PORT}!`);
 });
 

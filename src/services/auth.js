@@ -1,13 +1,20 @@
 const UserModel = require('../models/userModel');
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
-const { transError } = require('../../lang/vi');
+const { transError, transSuccess, transMail} = require('../../lang/vi');
+const sendMail = require('../config/mailer');
+
 
 const saltRounds = 7;
-let register = (email, gender, pass) => {
+let register = (email, gender, pass, protocol, host) => {
   return new Promise (async(resolve, reject) => {
     let userByEmail = await UserModel.findByEmail(email);
     if(userByEmail){
+      if(userByEmail.deletedAt != null) {
+        return reject(transError.account_removed);
+      }if(!userByEmail.local.isActive){
+        return reject(transError.account_isNotActive);
+      }
       return reject(transError.account_in_use);
     }
     let salt = bcrypt.genSaltSync(saltRounds);
@@ -21,8 +28,18 @@ let register = (email, gender, pass) => {
       }
     }
     let user = await UserModel.createItem(userItem);
-    resolve(user)
-  })
+    let linkVerify = `${protocol}://${host}/Verify/${user.local.verifyToken}`
+    sendMail(email, transMail.subject, transMail.template(linkVerify))
+    .then(success => {
+      resolve(transSuccess.userCreated(user.local.email));
+    })
+    .catch(async (error) => {
+      console.log(error);
+      //remove user
+      await UserModel.removeById(user._id)
+      reject(transMail.send_failed);
+    });
+  });
 };
 
 module.exports = { register }

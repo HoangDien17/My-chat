@@ -12,7 +12,7 @@ let UserSchema = new Schema({
     email: {type: String, trim: true},
     password: String,
     isActive: {type: Boolean, default: false},
-    veryfyToken: String
+    verifyToken: String
   },
   facebook: {
     uid: String,
@@ -25,8 +25,8 @@ let UserSchema = new Schema({
     email: {type: String, trim: true}
   },
   createdAt: {type: Number, default: Date.now},
-  updatedAt: {type: Number, default: Date.now},
-  deletedAt: {type: Number, default: Date.now},
+  updatedAt: {type: Number, default: null},
+  deletedAt: {type: Number, default: null},
 });
 UserSchema.statics = {
   createItem(item) {
@@ -34,6 +34,9 @@ UserSchema.statics = {
   },
   findByEmail(email) {
     return this.findOne({"local.email": email}).exec()
+  },
+  removeById(id) {
+    return this.findByIdAndRemove(id).exec()
   }
 }
 

@@ -1,7 +1,6 @@
 const userModel = require('../models/userModel');
 const { check, validationResult } = require('express-validator');
 const auth = require('../services/auth');
-const { transSuccess } = require('../../lang/vi');
 class SignUpController {
   index(req, res){
     res.render('signup', {layout:'main_login_register', errors: req.flash("errors"), successes: req.flash("successes")});
@@ -19,12 +18,14 @@ class SignUpController {
       return res.redirect('/signup')
     }
     try {
-      await auth.register(req.body.email, req.body.gender, req.body.pass);
-      successArray.push(transSuccess.registration_success);
+      let userCreated = await auth.register(req.body.email, req.body.gender, req.body.pass, req.protocol, req.get("host"));
+      successArray.push(userCreated);
       req.flash("successes", successArray);
-      return res.redirect('/signup');
+      return res.redirect('/login');
     } catch (error) {
-      errorArray.push(error)
+      errorArray.push(error);
+      req.flash("errors", errorArray);
+      res.redirect('/signup');
     }
     
     
