@@ -41,5 +41,15 @@ let register = (email, gender, pass, protocol, host) => {
     });
   });
 };
+let verifyAccount = (token) => {
+  return new Promise (async (resolve, reject) => {
+    let UserByToken = await UserModel.findByToken(token)
+    if(!UserByToken){
+      reject(transError.account_Actived)
+    }
+    await UserModel.verify(token)
+    resolve(transSuccess.account_actived)
+  });
+};
 
-module.exports = { register }
+module.exports = { register , verifyAccount}

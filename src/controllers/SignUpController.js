@@ -27,8 +27,21 @@ class SignUpController {
       req.flash("errors", errorArray);
       res.redirect('/signup');
     }
-    
-    
+  };
+  async getCheckActive(req, res) {
+    let token = req.params.Token;
+    var errorArray = [];
+    var successArray = [];
+    try {
+      let accountActive = await auth.verifyAccount(token);
+      successArray.push(accountActive);
+      req.flash("successes", successArray);
+      return res.redirect('/login');
+    } catch (error) {
+      errorArray.push(error);
+      req.flash("errors", errorArray);
+      res.redirect('/signup');
+    }
   }
 }
 
