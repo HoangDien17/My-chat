@@ -10,13 +10,16 @@ const transError = {
     login_failed : "Email hoặc mật khẩu không chính xác.",
     server_errors : "Có lỗi ở phía Server.",
     account_removed : "Tài khoản đã bị vô hiệu hóa hoặc xóa ra khỏi hệ thống.",
-    account_isNotActive : "Tài khoản đã được đăng ký nhưng chưa active tài khoản, hãy kiểm tra lại hộp thư email của bạn."
+    account_isNotActive : "Tài khoản đã được đăng ký nhưng chưa active tài khoản, hãy kiểm tra lại hộp thư email của bạn.",
+    account_errorActive : "Kích hoạt tài khoản không thành công, vui lòng liên hệ bộ phận kĩ thuật để được hỗ trợ",
+    account_Actived : "Tài khoản đã được kích hoạt."
 }
 
 const transSuccess = {
     userCreated : (userEmail) => {
-        return `Tài khoản <strong>${userEmail}</strong> đã được tạo, vui lòng kiểm tra lại email của bạn để active tài khoản trước khi đăng nhập.`
-    }
+        return `Tài khoản "${userEmail}" đã được tạo, vui lòng kiểm tra lại email của bạn để active tài khoản trước khi đăng nhập.`
+    },
+    account_actived : "Tài khoản đã được kích hoạt thành công, bạn đã có thể đăng nhập vào ứng dụng My Chat."
 }
 
 const transMail = {
