@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
+const passport = require('passport');
 require('dotenv').config();
 
 const app = express();
@@ -32,6 +33,10 @@ configSession(app);
 
 //flash-message
 app.use(flash());
+
+//passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 //locals file
 // app.use((req, res, next) => {
