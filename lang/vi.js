@@ -19,7 +19,10 @@ const transSuccess = {
     userCreated : (userEmail) => {
         return `Tài khoản "${userEmail}" đã được tạo, vui lòng kiểm tra lại email của bạn để active tài khoản trước khi đăng nhập.`
     },
-    account_actived : "Tài khoản đã được kích hoạt thành công, bạn đã có thể đăng nhập vào ứng dụng My Chat."
+    account_actived : "Tài khoản đã được kích hoạt thành công, bạn đã có thể đăng nhập vào ứng dụng My Chat.",
+    loginSuccess : (username) => {
+        return `Xin chào ${username}, chúc bạn một ngày mới tốt lành.`
+    }
 }
 
 const transMail = {

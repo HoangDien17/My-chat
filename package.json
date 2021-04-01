@@ -29,6 +29,8 @@
     "express-validator": "^6.10.0",
     "mongoose": "^5.12.2",
     "nodemailer": "^6.5.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "uuid": "^8.3.2"
   },
