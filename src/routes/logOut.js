@@ -1,10 +1,10 @@
 const express = require('express');
 const route = express.Router();
 
-const checkActiveController = require('../controllers/SignUpController');
+const logoutController = require('../controllers/LogoutController');
 const authenticateMiddleware = require('../authenticateMiddleware/authMiddleware');
 
-route.get('/Verify/:Token', authenticateMiddleware.CheckLoggedOut, checkActiveController.getCheckActive);
+route.get('/', authenticateMiddleware.CheckLoggedIn, logoutController.index);
 
 module.exports = route;
 
