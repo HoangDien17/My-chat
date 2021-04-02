@@ -38,12 +38,6 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-//locals file
-// app.use((req, res, next) => {
-//   res.locals.errors = req.flash("errors")
-//   res.locals.successes = req.flash("successes")
-//   next();
-// })
 
 //config router
 Route(app);

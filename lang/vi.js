@@ -22,7 +22,8 @@ const transSuccess = {
     account_actived : "Tài khoản đã được kích hoạt thành công, bạn đã có thể đăng nhập vào ứng dụng My Chat.",
     loginSuccess : (username) => {
         return `Xin chào ${username}, chúc bạn một ngày mới tốt lành.`
-    }
+    },
+    logout_success : "Đăng xuất thành công, hẹn gặp lại."
 }
 
 const transMail = {

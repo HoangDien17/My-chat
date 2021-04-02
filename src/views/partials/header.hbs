@@ -1,13 +1,79 @@
+
 <div class="nav">
-  <div class="row">
-    <div class="message toolbar col-12">
-      <a href=""><i class="fas fa-comment-dots"></i></a>
+  <div class="user-image toolbar">
+    <div class="btn-group">
+      <button class="btn" type="button" data-toggle="dropdown" aria-haspopup="true"><img src="/img/avatar/{{user.avatar}}" alt="avatar default" class="imageId" ></button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <button class="dropdown-item" type="button" id="button-user" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-user-circle" ></i><span>Tài khoản</span></button>
+        <hr>
+        <a class="dropdown-item" href="#"><i class="fas fa-cogs"></i><span>Cài đặt</span></a>
+        <hr>
+        <a class="dropdown-item" href="/logout" style="color: red;"><i class="fas fa-sign-out-alt"></i><span>Đăng xuất</span></a>
+      </div>
     </div>
-    <div class="phonebook toolbar col-12">
-      <a href=""><i class="far fa-address-book"></i></a>
-    </div>
-    <div class="notification toolbar col-12">
-      <a href=""><i class="far fa-bell"></i></a>
+  </div>
+  <div class="message toolbar">
+    <a href="" class="item"><i class="fas fa-comment-dots"></i></a>
+  </div>
+  <div class="phonebook toolbar">
+    <a href="" class="item"><i class="far fa-address-book"></i></a>
+  </div>
+  <div class="notification toolbar">
+    <a href="" class="item"><i class="far fa-bell"></i></a>
+  </div>
+</div>
+
+
+
+<!-- Modal User information -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Cập nhật thông tin tài khoản</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="information-user">
+          <div class="row1">
+            <img src="/img/Background-default.jpg" alt="">
+          </div>
+          <div class="avatar-update">
+            <img src="/img/avatar/{{user.avatar}}" alt="avatar default" class="imageUser" >
+          </div>
+          <div class="username-update">
+            <input type="text" value="{{user.username}}" id="edit-username">
+          </div>
+          <div class="row2">
+            <div class="telephone-update">
+              <label for="phone">Số điện thoại: </label><input type="text" value="+84{{user.phone}}" name="phone">
+            </div>
+            <div class="gender-update">
+              <input type="hidden" value="{{user.gender}}" id="checkgender">
+              <label for="">Giới tính: </label>
+              <input type="radio" value="male" name="gender" id="male"> Nam
+              <input type="radio" value="female" name="gender" id="female"> Nữ
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary">Cập nhật</button>
+      </div>
     </div>
   </div>
 </div>
+<script src="/javascript/jquery.js"></script>
+<script>
+  $(document).ready(function() {
+    var check = $('#checkgender').val()
+    if(check === "male") {
+      $("#male").attr('checked', 'checked');
+    } else {
+      $("#female").attr('checked', 'checked');
+    }
+  })
+</script>
