@@ -38,7 +38,6 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 //config router
 Route(app);
 
