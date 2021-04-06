@@ -4,8 +4,10 @@ const homeRoute = require('./home');
 const openAppRoute = require('./openApp');
 const checkActiveRoute = require('./checkActiveRoute');
 const logOutRoute = require('./logOut');
+const updateAvatarRouter = require('./updatAvatar');
 
 module.exports = (app) => {
+  app.use('/user/update-avatar', updateAvatarRouter);
   app.use('/logout', logOutRoute);
   app.use('/login', loginRoute);
   app.use('/signup', signUpRoute);

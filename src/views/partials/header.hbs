@@ -55,7 +55,6 @@
               <label for="phone">Số điện thoại: </label><input type="text" value="+84{{user.phone}}" name="phone" class="input-update" id="input-phone-update">
             </div>
             <div class="gender-update">
-              <input type="hidden" value="{{isChecked user.gender}}" id="checkgender">
               <label for="">Giới tính: </label>
               <input type="radio" value="male" name="gender" id="edit-gender-male" {{isChecked user.gender "male"}}> Nam
               <input type="radio" value="female" name="gender" id="edit-gender-female" {{isChecked user.gender "female"}}> Nữ
@@ -67,7 +66,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" id="button-cancel-update-info">Hủy bỏ</button>
+        <button type="button" class="btn btn-danger" id="button-cancel-update-info">Hủy bỏ</button>
         <button type="button" class="btn btn-primary" id="button-update-info">Cập nhật</button>
       </div>
     </div>
