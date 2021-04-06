@@ -31,17 +31,17 @@ function updateAvatar() {
       let math = ["image/png", "image/jpg", "image/jpeg"];
       let limit = 1048576 // 1mb
       
-      if($.inArray(fileData.type, math) == -1) {   // Kiểm tra xem kiểu file import có trùng trong mảng math không.
-        $.notify("Kiểu file không hợp lệ, chỉ chấp nhận jpg, png.", "error");
-        console.log(fileData.type);
-        $(this).val(null);
-        return false;
-      }
-      if(fileData.size > limit) {   // Kiểm tra xem kiểu file import có trùng trong mảng math không.
-        $.notify("Dung lượng ảnh upload phải nhỏ hơn 1MB.", "error");
-        $(this).val(null);
-        return false;
-      }
+      // if($.inArray(fileData.type, math) == -1) {   // Kiểm tra xem kiểu file import có trùng trong mảng math không.
+      //   $.notify("Kiểu file không hợp lệ, chỉ chấp nhận jpg, png.", "error");
+      //   console.log(fileData.type);
+      //   $(this).val(null);
+      //   return false;
+      // }
+      // if(fileData.size > limit) {   // Kiểm tra xem kiểu file import có trùng trong mảng math không.
+      //   $.notify("Dung lượng ảnh upload phải nhỏ hơn 1MB.", "error");
+      //   $(this).val(null);
+      //   return false;
+      // }
       
       if(typeof (FileReader) != "undefined") {
         let imagePri = $("#edit-avatar");  //Div chứa img
