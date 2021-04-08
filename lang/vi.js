@@ -1,10 +1,15 @@
 const transValidation = {
     email_incorrect : "Email phải có dạng Example@gmail.com.",
-    user_incorrect : "Tên đăng nhập phải ít nhất 3 kí tự, bao gồm chữ hoa, chữ thường, chữ số.",
-    password_incorrect : "Mật khẩu phải ít nhất 6 ký  tự, bao gồm chữ hoa, chữ thường, chữ số và ký tự đặc biệt.",
+    user_incorrect : "Tên đăng nhập phải ít nhất 3 ký tự, bao gồm chữ hoa, chữ thường, chữ số.",
+    password_incorrect : "Mật khẩu phải ít nhất 6 ký tự, bao gồm chữ hoa, chữ thường, chữ số và ký tự đặc biệt.",
     re_password_incorrect : "Mật khẩu nhập lại chưa chính xác.",
     avatar_type : "Kiểu file không hợp lệ, chỉ chấp nhận jpg, png.",
-    avatar_limitsize : "Dung lượng ảnh upload phải nhỏ hơn 1MB."
+    avatar_limitsize : "Dung lượng ảnh upload phải nhỏ hơn 1MB.",
+
+    update_username : "Username giới hạn từ 3 - 15 ký tự và không chứa ký tự đặc biệt",
+    update_gender : "Dữ liệu giới tính không chính xác.",
+    update_phone : "Số điện thoại Việt nam bắt đầu là số 0 và giới hạn từ 10 - 11 ký tự",
+    update_address : "Địa chỉ giới hạn từ 5 - 30 ký tự."
 }
 
 const transError = {
@@ -25,7 +30,8 @@ const transSuccess = {
     loginSuccess : (username) => {
         return `Xin chào ${username}, chúc bạn một ngày mới tốt lành.`
     },
-    logout_success : "Đăng xuất thành công, hẹn gặp lại."
+    logout_success : "Đăng xuất thành công, hẹn gặp lại.",
+    info_user_updated : "Thông tin người dùng đã được cập nhật thành công."
 }
 
 const transMail = {

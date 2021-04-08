@@ -2,7 +2,7 @@
 <div class="nav">
   <div class="user-image toolbar">
     <div class="btn-group">
-      <button class="btn" type="button" data-toggle="dropdown" aria-haspopup="true"><img src="/img/avatar/{{user.avatar}}" alt="avatar default" class="imageId" ></button>
+      <button class="btn" type="button" data-toggle="dropdown" aria-haspopup="true"><img src="/img/avatar/{{user.avatar}}" alt="avatar default" class="imageId" id="avatar-by-user"></button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <button class="dropdown-item" type="button" id="button-user" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-user-circle" ></i><span>Tài khoản</span></button>
         <hr>
@@ -22,8 +22,6 @@
     <a href="" class="item"><i class="far fa-bell"></i></a>
   </div>
 </div>
-
-
 
 <!-- Modal User information -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -48,20 +46,26 @@
             <span><button type="button" class="button-update-avatar" id="button-update-avatar"><i class="fas fa-camera-retro"></i></button></span>
           </div>
           <div class="username-update">
-            <input type="text" value="{{user.username}}" id="edit-username">
+            <input type="text" value="{{user.username}}" id="edit-username" name="username">
           </div>
           <div class="row2">
             <div class="telephone-update">
-              <label for="phone">Số điện thoại: </label><input type="text" value="+84{{user.phone}}" name="phone" class="input-update" id="input-phone-update">
+              <label for="phone"><strong>Số điện thoại: </strong></label><input type="text" value="{{user.phone}}" name="phone" class="input-update" id="input-phone-update">
             </div>
             <div class="gender-update">
-              <label for="">Giới tính: </label>
+              <label for=""><strong>Giới tính: </strong></label>
               <input type="radio" value="male" name="gender" id="edit-gender-male" {{isChecked user.gender "male"}}> Nam
               <input type="radio" value="female" name="gender" id="edit-gender-female" {{isChecked user.gender "female"}}> Nữ
             </div>
             <div class="address-update">
-              <label for="address">Địa chỉ: </label><textarea type="text" value="{{user.address}}" name="address" rows="2" class="input-update" id="edit-address-update"></textarea>
+              <label for="address"><strong>Địa chỉ: </strong></label><textarea type="text" value="{{user.address}}" name="address" rows="2" class="input-update" id="edit-address-update"></textarea>
             </div>
+          </div>
+          <div class="alert alert-danger message-warning alert-errors" role="alert">
+            <span>This is a danger alert—check it out!</span> 
+          </div>
+          <div class="alert alert-success message-warning alert-success" role="alert">
+            <span>This is a danger alert—check it out!</span> 
           </div>
         </div>
       </div>
