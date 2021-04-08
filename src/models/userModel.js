@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 let UserSchema = new Schema({
   username: String,
   gender: {type: String, default: "male"},
-  phone: {type:Number, default: null },
+  phone: {type:String, default: null },
   address: {type: String, default: null},
   avatar: {type: String, default: "avatar-default.jpg"},
   role: {type: String, default: "user"},
@@ -50,6 +50,9 @@ UserSchema.statics = {
   },
   findUserById(id) {
     return this.findById(id).exec()
+  },
+  updateUser(id, item) {
+    return this.findByIdAndUpdate(id, item).exec();
   }
 }
 UserSchema.methods = {
