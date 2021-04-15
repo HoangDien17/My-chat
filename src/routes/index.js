@@ -4,12 +4,14 @@ const homeRoute = require('./home');
 const openAppRoute = require('./openApp');
 const checkActiveRoute = require('./checkActiveRoute');
 const logOutRoute = require('./logOut');
-const updateAvatarRouter = require('./updatAvatar');
-const updateInfoRouter = require('./updateInfo');
+const updateAvatarRoute = require('./updatAvatar');
+const updateInfoRoute = require('./updateInfo');
+const searchRoute = require('./search');
 
 module.exports = (app) => {
-  app.use('/user/update-info', updateInfoRouter);
-  app.use('/user/update-avatar', updateAvatarRouter);
+  app.use('/', searchRoute)
+  app.use('/user/update-info', updateInfoRoute);
+  app.use('/user/update-avatar', updateAvatarRoute);
   app.use('/logout', logOutRoute);
   app.use('/login', loginRoute);
   app.use('/signup', signUpRoute);
