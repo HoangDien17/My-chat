@@ -7,7 +7,7 @@
 .nav{
   height: 100%;
   width: 70px;
-  background: rgb(0, 183, 255);
+  background: #0091ff;
   text-align: center;
   justify-content: space-around;
   flex-direction: column;
@@ -63,6 +63,9 @@ button:focus {
   border-radius: 50%;
   padding: 0px;
   border: none;
+}
+.bg-search {
+  background-color: #d5d5d8;
 }
 /*-------------------------------------------------------------------------------------------------------------------*/
 /* modal information user*/
@@ -215,3 +218,28 @@ button:focus {
 hr{
   width: 80%;
 }
+.btn-outline:focus {
+  box-shadow: none;
+}
+
+input:focus {
+  border: none;
+}
+
+/* Form search add people */
+.form-control:focus {
+   box-shadow: none;
+ }
+ 
+ .form-control-underlined {
+   border-width: 0;
+   border-bottom-width: 1px;
+   border-radius: 0;
+   padding-left: 0;
+ }
+ 
+ .form-control::placeholder {
+   font-size: 0.95rem;
+   color: #aaa;
+   font-style: italic;
+ }

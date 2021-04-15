@@ -9,5 +9,10 @@ let ContactSchema = new Schema({
   updatedAt: {type: Number, default: null},
   deletedAt: {type: Number, default: null},
 });
+ContactSchema.statics = {
+  findAllByUser(currentId) {
+    return this.findById(currentId).exec()
+  }
+}
 
 module.exports = mongoose.model("contact", ContactSchema);

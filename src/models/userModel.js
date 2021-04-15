@@ -53,6 +53,18 @@ UserSchema.statics = {
   },
   updateUser(id, item) {
     return this.findByIdAndUpdate(id, item).exec();
+  },
+  findAllForAddContact(deprecatedUserIds, keyword) {
+    return this.findAllForAddContact({
+      $and: [
+        {"_id": {$nin: deprecatedUserIds}},
+        {"local.isActive": true},
+        {$or: [
+          {"username": {"$regex": new RegExp(keyword, "i")}},
+          {"local.email": {"$regex": new RegExp(keyword, "i")}}
+        ]}
+      ]
+    }, {_id: 1, username: 1, address: 1, avatar: 1}).exec();
   }
 }
 UserSchema.methods = {
