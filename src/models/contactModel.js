@@ -11,7 +11,10 @@ let ContactSchema = new Schema({
 });
 ContactSchema.statics = {
   findAllByUser(currentId) {
-    return this.findById(currentId).exec()
+    return this.find({$or: [
+      {"userId": currentId},
+      {"contactId": currentId}
+    ]}).exec()
   }
 }
 
