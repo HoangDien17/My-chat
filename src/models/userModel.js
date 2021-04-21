@@ -55,7 +55,7 @@ UserSchema.statics = {
     return this.findByIdAndUpdate(id, item).exec();
   },
   findAllForAddContact(deprecatedUserIds, keyword) {
-    return this.findAllForAddContact({
+    return this.find({
       $and: [
         {"_id": {$nin: deprecatedUserIds}},
         {"local.isActive": true},

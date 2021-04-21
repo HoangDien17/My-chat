@@ -32,7 +32,17 @@
           </div>
           <hr>
           <div class="px-3">
-            <p>Hello</p>
+            {{#if contacts}}
+            {{#each contacts as |contact|}}
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="/img/avatar/avatar-default.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{contact.username}}</h5>
+                <a href="#" class="btn btn-primary">Thêm bạn bè</a>
+              </div>
+            </div>
+            {{/each}}
+            {{/if}}
           </div>
         </fieldset>
         <fieldset id="tab021">
@@ -88,7 +98,8 @@
                   <h6>What are you good at ?</h6>
                 </label>
                 <div class="custom-control custom-checkbox"> <input class="custom-control-input" id="option1"
-                    type="checkbox" value=""> <label class="custom-control-label" for="option1">Web Development</label>
+                    type="checkbox" value=""> <label class="custom-control-label" for="option1">Web
+                    Development</label>
                 </div>
                 <div class="custom-control custom-checkbox"> <input class="custom-control-input" id="option2"
                     type="checkbox" value=""> <label class="custom-control-label" for="option2">Data Structures &
