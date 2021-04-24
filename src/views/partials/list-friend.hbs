@@ -1,0 +1,10 @@
+<div class="list-friend text-center p-t-3">
+  <p>Bạn bè</p>
+  <ul class="list-friend-ul">
+    {{#each friendContacts as |friendContact|}}
+    <li class="list-friend-li dis-flex">
+     <p>{{friendContact.username}}</p>
+    </li>
+    {{/each}}
+  </ul>
+</div>

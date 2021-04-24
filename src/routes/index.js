@@ -7,8 +7,10 @@ const logOutRoute = require('./logOut');
 const updateAvatarRoute = require('./updatAvatar');
 const updateInfoRoute = require('./updateInfo');
 const searchRoute = require('./search');
+const listFriendRoute = require('./list-friend');
 
 module.exports = (app) => {
+  app.use('/list-friend', listFriendRoute);
   app.use('/', searchRoute)
   app.use('/user/update-info', updateInfoRoute);
   app.use('/user/update-avatar', updateAvatarRoute);

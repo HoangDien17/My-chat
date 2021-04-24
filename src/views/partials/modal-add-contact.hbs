@@ -31,13 +31,13 @@
             </div>
           </div>
           <hr>
-          <div class="px-3">
+          <div class="px-3" id="px-3">
             {{#if contacts}}
-            {{#each contacts as |contact|}}
+            {{#each contacts as |item|}}
             <div class="card" style="width: 18rem;">
               <img class="card-img-top" src="/img/avatar/avatar-default.jpg" alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title">{{contact.username}}</h5>
+                <h5 class="card-title">{{item.username}}</h5>
                 <a href="#" class="btn btn-primary">Thêm bạn bè</a>
               </div>
             </div>

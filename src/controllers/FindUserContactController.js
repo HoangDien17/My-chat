@@ -7,8 +7,10 @@ let findUserContact = async(req, res) => {
     let keyword = req.params.keyword;
     let contacts = await contact.findUsersContact(currentId, keyword);
     contacts = mongooseArrayToObject(contacts);
-    console.log(contacts);
-    res.render("partials/modal-add-people", {contacts});
+    // contacts.forEach(item => {
+    //   console.log(1);
+    // })
+    res.render("partials/modal-add-contact", {contacts});
   } catch (error) {
     res.status(500).send(error)
   }
