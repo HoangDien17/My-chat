@@ -16,4 +16,18 @@ let findUsersContact = (currentUserId, keyword) => {
   });
 }
 
-module.exports = {findUsersContact};
+let listFriendContact = (currentUserId) => {
+  return new Promise(async (resolve, reject) => {
+    let list = [];
+    let contactsByUser = await ContactModel.findListFriendContact(currentUserId);
+    contactsByUser.forEach((contact) => {
+      list.push(contact.userId)
+      list.push(contact.contactId)
+    })
+    list = _.uniqBy(list);
+    let users = await UserModel.findListFriendUser(list, currentUserId);
+    resolve(users);
+  })
+}
+
+module.exports = {findUsersContact, listFriendContact};

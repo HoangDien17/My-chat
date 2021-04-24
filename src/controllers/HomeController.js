@@ -5,6 +5,7 @@ class HomeController {
     let user = req.user
     user = mongooseToObject(user);
     res.render('home', {layout:'main', user});
+    
   };
 }
 

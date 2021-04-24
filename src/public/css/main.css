@@ -243,3 +243,11 @@ input:focus {
    color: #aaa;
    font-style: italic;
  }
+  ul {
+  list-style: none;
+  }
+
+  .item{
+    background:none;
+    border: none;
+  }
