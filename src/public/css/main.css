@@ -251,3 +251,53 @@ input:focus {
     background:none;
     border: none;
   }
+
+/*contact */
+#image-item{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.image-contact-item{
+  width: 30%;
+  float: left;
+}
+.username-contact-item {
+  width: 50%;
+  float: left;
+}
+.more-option{
+  width: 20%;
+  float: left;
+}
+.list-friend-li{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+}
+.list-friend-ul{
+  padding: 10px;
+}
+.p-username{
+  margin-bottom: 0px;
+}
+
+/* show search contact*/
+.card-img-top {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: auto;
+}
+.card-search-contact{
+  width: 100%;
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+}
+#tab011{
+  max-height: 500px;
+  overflow-y: auto;
+}

@@ -4,7 +4,7 @@ const authenticateMiddleware = require('../authenticateMiddleware/authMiddleware
 
 const findUserContactController = require('../controllers/FindUserContactController');
 
-route.get('/search-user/:keyword', authenticateMiddleware.CheckLoggedIn, findUserContactController);
+route.post('/', authenticateMiddleware.CheckLoggedIn, findUserContactController);
 
 module.exports = route;
 
