@@ -1,10 +1,30 @@
-<div class="list-friend text-center p-t-3">
+<div class="list-friend text-center p-t-3" style="display: none;" id="list-friend-id">
   <p>Bạn bè</p>
+  <hr style="width: 90%;">
   <ul class="list-friend-ul">
     {{#each friendContacts as |friendContact|}}
-    <li class="list-friend-li dis-flex">
-     <p>{{friendContact.username}}</p>
+    <li class="list-friend-li" data-id="{{friendContact._id}}">
+      <div class="image-contact-item">
+        <img id="image-item" src="/img/avatar/avatar-default.jpg" alt="image">
+      </div>
+      <div class="username-contact-item">
+        <p class="p-username">{{friendContact.username}}</p>
+      </div>
+      <div class="more-option">
+        <div class="dropdown">
+          <button class="btn btn-outline " type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-ellipsis-h"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <button class="dropdown-item" type="button" id="button-user" data-toggle="modal" data-target="#information-contact">Xem thông tin</button>
+            <hr style="witch: 90%">
+            <button class="dropdown-item btn-delete-contact" type="button" id="btn-delete-contact">Xóa bạn</button>
+          </div>
+        </div>
+      </div>
     </li>
     {{/each}}
   </ul>
 </div>
+    {{!-- {{>information-contact}} --}}

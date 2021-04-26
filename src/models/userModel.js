@@ -73,7 +73,7 @@ UserSchema.statics = {
         {"_id": {$in: list}},
         {"_id": {$nin: [currentId]}}
       ]
-    },{_id: 1, username: 1, address: 1, avatar: 1}).exec();
+    },{_id: 1, username: 1, address: 1, avatar: 1, phone: 1, gender: 1}).exec();
   }
 }
 UserSchema.methods = {

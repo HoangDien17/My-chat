@@ -4,13 +4,10 @@ const {mongooseArrayToObject, mongooseToObject} = require('../ultil/mongoose');
 let findUserContact = async(req, res) => {
   try {
     let currentId = req.user._id;
-    let keyword = req.params.keyword;
+    let keyword = req.body.keyword;
     let contacts = await contact.findUsersContact(currentId, keyword);
     contacts = mongooseArrayToObject(contacts);
-    // contacts.forEach(item => {
-    //   console.log(1);
-    // })
-    res.render("partials/modal-add-contact", {contacts});
+    res.json(contacts)
   } catch (error) {
     res.status(500).send(error)
   }

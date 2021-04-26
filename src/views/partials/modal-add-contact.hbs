@@ -34,10 +34,11 @@
           <div class="px-3" id="px-3">
             {{#if contacts}}
             {{#each contacts as |item|}}
-            <div class="card" style="width: 18rem;">
+            <div class="card card-search-contact">
               <img class="card-img-top" src="/img/avatar/avatar-default.jpg" alt="Card image cap">
-              <div class="card-body">
+              <div class="card-body" style="padding-bottom: 10px;">
                 <h5 class="card-title">{{item.username}}</h5>
+                <p class="card-title">{{item.address}}</p>
                 <a href="#" class="btn btn-primary">Thêm bạn bè</a>
               </div>
             </div>
@@ -128,10 +129,6 @@
         </fieldset>
       </div>
       <div class="line"></div>
-      {{!-- <div class="modal-footer d-flex flex-column justify-content-center border-0">
-        <p class="text-muted">Can't find what you're looking for?</p> <button type="button"
-          class="btn btn-primary">Contact Support Team</button>
-      </div> --}}
     </div>
   </div>
 </div>

@@ -2,9 +2,9 @@ const express = require('express');
 const route = express.Router();
 const authenticateMiddleware = require('../authenticateMiddleware/authMiddleware');
 
-const listFriendController = require('../controllers/ListFriendController');
+const deleteFriendController = require('../controllers/DeleteFriendController');
 
-route.get('/', authenticateMiddleware.CheckLoggedIn, listFriendController);
+route.put('/', authenticateMiddleware.CheckLoggedIn, deleteFriendController);
 
 module.exports = route;
 
