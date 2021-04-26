@@ -7,13 +7,13 @@
           <h6 class="font-weight-bold">Tìm bạn bè</h6>
         </div>
         <div class="tabs" id="tab02">
-          <h6 class="text-muted">Danh bạ</h6>
+          <h6 class="text-muted" data-button="1">Danh bạ<span class="badge badge-success badge-notification number-noti-list-friend" data-button="1">9</span></h6>
         </div>
         <div class="tabs" id="tab03">
-          <h6 class="text-muted">Đang chờ xác nhận</h6>
+          <h6 class="text-muted" data-button="2">Đang chờ xác nhận<span class="badge badge-info badge-notification number-noti-confirm" data-button="2"></span></h6>
         </div>
         <div class="tabs" id="tab04">
-          <h6 class="text-muted">Yêu cầu kết bạn</h6>
+          <h6 class="text-muted" data-button="3">Yêu cầu kết bạn<span class="badge badge-danger badge-notification number-noti-sent" data-button="3">9</span></h6>
         </div>
       </div>
       <div class="line"></div>
@@ -31,20 +31,7 @@
             </div>
           </div>
           <hr>
-          <div class="px-3" id="px-3">
-            {{#if contacts}}
-            {{#each contacts as |item|}}
-            <div class="card card-search-contact">
-              <img class="card-img-top" src="/img/avatar/avatar-default.jpg" alt="Card image cap">
-              <div class="card-body" style="padding-bottom: 10px;">
-                <h5 class="card-title">{{item.username}}</h5>
-                <p class="card-title">{{item.address}}</p>
-                <a href="#" class="btn btn-primary">Thêm bạn bè</a>
-              </div>
-            </div>
-            {{/each}}
-            {{/if}}
-          </div>
+          <div class="px-3" id="px-3"></div>
         </fieldset>
         <fieldset id="tab021">
           <div class="bg-light">

@@ -8,8 +8,12 @@ const updateAvatarRoute = require('./updatAvatar');
 const updateInfoRoute = require('./updateInfo');
 const searchRoute = require('./search');
 const unfriendRoute = require('./unfriend');
+const addNewContactRoute = require('./newContact');
+const removeRequestRoute = require('./removeRequest');
 
 module.exports = (app) => {
+  app.use('/remove-request', removeRequestRoute);
+  app.use('/add-contact', addNewContactRoute);
   app.use('/search-user', searchRoute);
   app.use('/delete-friend/:id', unfriendRoute);
   app.use('/user/update-info', updateInfoRoute);

@@ -10,6 +10,9 @@ let ContactSchema = new Schema({
   deletedAt: { type: Number, default: null },
 });
 ContactSchema.statics = {
+  createItem(item){
+    return this.create(item);
+  },
   findAllByUser(currentId) {
     return this.find({
       $or: [
@@ -31,6 +34,32 @@ ContactSchema.statics = {
               ]
           }]
     }).exec()
+  },
+  checkExistFriend(currentId, contactId) {
+    return this.findOne({
+      $or: [
+        {
+          $and: [
+            { "userId": currentId},
+            { "contactId": contactId}
+          ]
+        },
+        {
+          $and: [
+            { "userId": contactId},
+            { "contactId": currentId}
+          ]
+        }
+      ]
+    }).exec();
+  },
+  removeRequestContact(currentId, contactId) {
+    return this.remove({
+      $and: [
+        { "userId": currentId },
+        { "contactId": contactId }
+      ]
+    }).exec();
   }
 }
 
