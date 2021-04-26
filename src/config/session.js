@@ -1,20 +1,25 @@
 const session = require('express-session');
-const connectMongo = require('connect-mongo');
+const MongoStore = require('connect-mongo');
 
-const configSession = (app) => {
+let sessionStorage = MongoStore.create({
+  mongoUrl: `${process.env.MONGODB_URI}`,
+  autoRemove: 'interval'
+})
+
+let configSession = (app) => {
     app.use(session({
-      store: connectMongo.create({
-        mongoUrl: 'mongodb://localhost:27017/my_chat',
-        autoRemove: 'interval',
-      }),
-        key: 'express.sid',
-        secret: 'keyboard cat',
-        resave: false,
-        saveUninitialized: false,
-        cookie: {
-            maxAge: 1000*60*60*24
-        }
+      store: sessionStorage,
+      key: `${process.env.SESSION_KEY}`,
+      secret: `${process.env.SESSION_SECRET}`,
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+          maxAge: 1000*60*60*24
+      }
     }));
 }
 
-module.exports = configSession;
+module.exports = {
+  configSession,
+  sessionStorage
+};
