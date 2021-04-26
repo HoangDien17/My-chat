@@ -4,13 +4,23 @@ const bodyParser = require('body-parser');
 const flash = require('connect-flash');
 const passport = require('passport');
 require('dotenv').config();
+const http = require('http');
+const socketio = require('socket.io');
+const cookieParser = require('cookie-parser');
+
 
 const app = express();
+
+// Init server with socketio & express
+let server = http.createServer(app);  // Chia sẻ với socketio bằng cách dùng chung http
+let io = socketio(server)
 
 const db = require('./config/db');
 const ConfigView = require('./config/configView');
 const Route = require('./routes');
-const configSession = require('./config/session');
+const Session = require('./config/session');
+const initSockets = require('./sockets');
+const configSocketIo = require('./config/socketio');
 
 //config db
 db.Connect();
@@ -29,20 +39,29 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //config session
-configSession(app);
+Session.configSession(app);
 
 //flash-message
 app.use(flash());
+
+// cookie-parser
+app.use(cookieParser());
 
 //passport
 app.use(passport.initialize());
 app.use(passport.session());
 
-//config router
+//init router
 Route(app);
 
+//passport-socketio
+configSocketIo(io);
+
+//init socketio
+initSockets(io);
+
 // port
-app.listen(process.env.PORT, () => {
+server.listen(process.env.PORT, () => {
   console.log(`Server is running on port:${process.env.PORT}!`);
 });
 

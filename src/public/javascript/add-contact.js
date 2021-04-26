@@ -8,6 +8,7 @@ function addContact() {
         $('#px-3').find(`button.add-contact-someone[data-uid = ${targetId}]`).hide();
         $('#px-3').find(`button.destroy-contact-someone[data-uid = ${targetId}]`).css("display", "inline-block");
         increaseNumberNoti("number-noti-confirm");
+        socket.emit("add-new-contact", {contactId: targetId});
       }
     })
   })
