@@ -30,4 +30,29 @@ let listFriendContact = (currentUserId) => {
   })
 }
 
-module.exports = {findUsersContact, listFriendContact};
+let AddNew = (currentId, contactId) => {
+  return new Promise(async (resolve, reject) => {
+    let contact = await ContactModel.checkExistFriend(currentId, contactId)
+    if(contact) {
+      return reject(false);
+    }
+    let newContactItem = {
+      userId: currentId,
+      contactId: contactId
+    }
+    let newContact = await ContactModel.createItem(newContactItem);
+    resolve(newContact);
+  });
+}
+
+let RemoveRequest = (currentId, contactId) => {
+  return new Promise(async (resolve, reject) => {
+    let removeRequestContact = await ContactModel.removeRequestContact(currentId, contactId)
+    if(removeRequestContact.n === 0) {
+      return reject(false);
+    }
+    resolve(true);
+  });
+}
+
+module.exports = {findUsersContact, listFriendContact, AddNew, RemoveRequest};

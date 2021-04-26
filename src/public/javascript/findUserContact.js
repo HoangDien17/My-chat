@@ -15,17 +15,24 @@ function findUserContact() {
       render += `<div class="card-body" style="padding-bottom: 10px;">`
       render += `<h5 class="card-title">${item.username}</h5>`
       render += `<p class="card-title">${item.address}</p>`
-      render += `<a href="#" class="btn btn-primary">Thêm bạn bè</a>`
+      render += `<button type="button" class="btn btn-primary add-contact-someone" data-uid="${item._id}">Thêm bạn bè</button>`
+      render += `<button type="button" style="display: none" class="btn btn-danger destroy-contact-someone" data-uid="${item._id}">Hủy yêu cầu</button>`
       render += `</div>`
       render += `</div>`
-      $('#px-3').html(render)
+      $('#px-3').html(render);
+
+      // Call add-contact
+      addContact();
+
+      // Call remove request contact
+      removeRequest();
       })
     }
   })
-}
+};
 
 function showListFriend() {
-  $("#list-friend-id").attr("style", { display: "block" })
+  $("#list-friend-id").attr("style", "display: block")
 }
 
 function alertUnfriend() {
@@ -53,4 +60,5 @@ $(document).ready(function () {
   $("#input-keyword").bind("keypress", findUserContact);
   $(".btn-list-friend").bind("click", showListFriend);
   $(".btn-delete-contact").bind("click", alertUnfriend);
+
 })

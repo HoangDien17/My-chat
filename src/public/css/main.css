@@ -301,3 +301,20 @@ input:focus {
   max-height: 500px;
   overflow-y: auto;
 }
+
+/*Bage notification */
+/* h6.text-muted {
+  position: relative;
+} */
+.badge-notification {
+  /* position: absolute; */
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  /* top: -10px;
+  right: -15px; */
+  padding: 1px 0px;
+  box-shadow: 3px 3px 3px rgb(176, 220, 245);
+  margin-left: 3px;
+  font-size: 12px;
+}
