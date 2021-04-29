@@ -21,6 +21,7 @@
   padding: 0px;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .toolbar a {
   text-decoration: none;
@@ -32,9 +33,7 @@
 .toolbar i:hover{
   color: black;
 }
-.item {
-  color: white;
-}
+
 .dropdown-menu span {
   padding-left: 10px;
 }
@@ -46,16 +45,13 @@ button:focus {
 /* .toolbar:first-child{
   margin-top: 100px;
 } */
-/* .imageId{
-  width: 60px;
-  height: 60px;
-  justify-content: center;
-} */
+
 .imageId {
   width: 60px;
   height: 60px;
   object-fit: contain;
   border-radius: 50%;
+  background: white;
 }
 .user-image .btn {
   width: 60px;
@@ -197,6 +193,8 @@ button:focus {
   width: 15%;
   height: 100%;
   text-align: center;
+  display: flex;
+  position: relative;
 }
 .add-many-people{
   width: 15%;
@@ -250,6 +248,10 @@ input:focus {
   .item{
     background:none;
     border: none;
+    color: white;
+  }
+  .item:focus {
+    color: black;
   }
 
 /*contact */
@@ -271,14 +273,24 @@ input:focus {
   float: left;
 }
 .list-friend-li{
-  display: flex;
-  width: 100%;
-  flex-direction: row;
   align-items: center;
+  margin: 0px auto 5px;
   padding: 10px;
+  width: 100%;
+  min-height: 60px;
+  border-radius: 5px;
+  border:rgb(223, 222, 222) 1px solid;
+  background: rgb(243, 241, 241);
+  display: flex;
 }
 .list-friend-ul{
   padding: 10px;
+  max-height: 470px;
+  border-radius: 5px;
+  overflow-y: auto;
+  margin: auto;
+  padding: 7px;
+  width: 95%;
 }
 .p-username{
   margin-bottom: 0px;
@@ -316,5 +328,58 @@ input:focus {
   padding: 1px 0px;
   box-shadow: 3px 3px 3px rgb(176, 220, 245);
   margin-left: 3px;
+  font-size: 12px;
+}
+
+/*Notification */
+.big-border {
+  margin: 0px auto 5px;
+  padding: 10px;
+  width: 95%;
+  min-height: 60px;
+  border-radius: 5px;
+  border:rgb(223, 222, 222) 1px solid;
+  background: rgb(243, 241, 241);
+  display: flex;
+}
+.avatar-notification img {
+  margin: auto;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: #aaa 1px solid;
+}
+.content-notifi{
+  padding: 10px;
+}
+.title-notifi {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.notification-badge {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  padding-top: 2px;
+  font-size: 15px;
+  position: absolute;
+  top: -7px;
+  right: 10px;
+}
+
+.message-all {
+  overflow-y: auto;
+  max-height: 470px;
+}
+
+.badge-notification-add-contact{
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  top: -3px;
+  right: 10px;
+  padding: 1px 0px;
   font-size: 12px;
 }
