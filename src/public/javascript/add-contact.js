@@ -12,4 +12,20 @@ function addContact() {
       }
     })
   })
-}
+};
+
+socket.on("response-add-new-contact", function(user) {
+  let noti = `<div class="big-border" data-id="${user.id}">
+                <div class="avatar-notification">
+                  <img src="/img/avatar/${user.avatar}" alt="avatar">
+                </div>
+                <div class="content-notifi">
+                  <strong>${user.username}</strong> đã gửi cho bạn một lời mời kết bạn!
+                </div>
+              </div>`
+  $(".message-all").prepend(noti);  //đẩy nội dung mới nhất lên trên, cũ xuống dưới
+  
+  increaseNumberNoti("badge-notification-add-contact");
+  increaseNumberNoti("notification-message-badge");
+  increaseNumberNoti("number-noti-sent");
+})

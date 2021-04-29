@@ -1,11 +1,12 @@
 <div class="list-friend text-center p-t-3" style="display: none;" id="list-friend-id">
-  <p>Bạn bè</p>
-  <hr style="width: 90%;">
+  <div class="title-list-friend" style="text-align: center;">
+    <h6>Bạn bè</h6>
+  </div>
   <ul class="list-friend-ul">
     {{#each friendContacts as |friendContact|}}
     <li class="list-friend-li" data-id="{{friendContact._id}}">
       <div class="image-contact-item">
-        <img id="image-item" src="/img/avatar/avatar-default.jpg" alt="image">
+        <img id="image-item" src="/img/avatar/{{friendContact.avatar}}" alt="image">
       </div>
       <div class="username-contact-item">
         <p class="p-username">{{friendContact.username}}</p>
@@ -27,4 +28,4 @@
     {{/each}}
   </ul>
 </div>
-    {{!-- {{>information-contact}} --}}
+    {{>information-contact}}
