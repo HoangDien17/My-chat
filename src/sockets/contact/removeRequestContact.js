@@ -1,19 +1,17 @@
 
-let addNewContact = (io) => {
+let removeRequestContact = (io) => {
   let clients = {};
   io.on("connection", (socket) => {
     let currentId = socket.request.user._id;
     clients[currentId] ? clients[currentId].push(socket.id) : (clients[currentId] = [socket.id]);
 
-    socket.on("add-new-contact", (data) => {
+    socket.on("remove-request-contact", (data) => {
       let currentUser = {
-        id: socket.request.user._id,
-        username: socket.request.user.username,
-        avatar: socket.request.user.avatar
+        id: socket.request.user._id
       };
       if(clients[data.contactId]) {   // Check id contact có đang online hay không ?
         clients[data.contactId].forEach(socketId => {
-          io.to(`${socketId}`).emit("response-add-new-contact", currentUser);
+          io.to(`${socketId}`).emit("response-remove-request-contact", currentUser);
         })
       }
     });
@@ -29,4 +27,4 @@ let addNewContact = (io) => {
   });
 };
 
-module.exports = addNewContact;
+module.exports = removeRequestContact;

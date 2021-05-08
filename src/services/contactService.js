@@ -1,6 +1,7 @@
 const ContactModel = require('../models/contactModel');
 const UserModel = require('../models/userModel');
 const _ = require('lodash');
+const NotificationModel = require('../models/notificationModel');
 
 let findUsersContact = (currentUserId, keyword) => {
   return new Promise(async (resolve, reject) => {
@@ -47,7 +48,9 @@ let AddNew = (currentId, contactId) => {
 
 let RemoveRequest = (currentId, contactId) => {
   return new Promise(async (resolve, reject) => {
+    let notifiType = NotificationModel.NOTIFICATION_TYPE.ADD_CONTACT;
     let removeRequestContact = await ContactModel.removeRequestContact(currentId, contactId)
+    await NotificationModel.model.removeNotificationAddContact(currentId, contactId, notifiType);
     if(removeRequestContact.n === 0) {
       return reject(false);
     }
@@ -55,4 +58,17 @@ let RemoveRequest = (currentId, contactId) => {
   });
 }
 
-module.exports = {findUsersContact, listFriendContact, AddNew, RemoveRequest};
+let notificationContact = (currentId, contactId) => {
+  return new Promise(async (resolve, reject) => {
+    let notificationItem = {
+      senderId: currentId,
+      receiverId: contactId,
+      type: NotificationModel.NOTIFICATION_TYPE.ADD_CONTACT
+    }
+
+    let notification = await NotificationModel.model.createNewNotifi(notificationItem);
+    resolve(notification);
+  })
+}
+
+module.exports = {findUsersContact, listFriendContact, AddNew, RemoveRequest, notificationContact};
