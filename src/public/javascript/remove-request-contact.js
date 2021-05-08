@@ -11,8 +11,18 @@ function removeRequest() {
           $('#px-3').find(`button.destroy-contact-someone[data-uid = ${targetId}]`).hide();
           $('#px-3').find(`button.add-contact-someone[data-uid = ${targetId}]`).css("display", "inline-block");
           decreaseNumberNoti("number-noti-confirm");
+
+          socket.emit("remove-request-contact", {contactId: targetId});
         }
       }
     })
   })
 }
+
+socket.on("response-remove-request-contact", function(user) {
+  $(".message-all").find(`div[data-id = ${user.id}]`).remove();
+  
+  decreaseNumberNoti("badge-notification-add-contact");
+  decreaseNumberNoti("notification-message-badge");
+  decreaseNumberNoti("number-noti-sent");
+})

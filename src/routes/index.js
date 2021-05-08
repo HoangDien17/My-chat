@@ -10,8 +10,10 @@ const searchRoute = require('./search');
 const unfriendRoute = require('./unfriend');
 const addNewContactRoute = require('./newContact');
 const removeRequestRoute = require('./removeRequest');
+const loadNotiRoute = require('./loadNotification');
 
 module.exports = (app) => {
+  app.use('/load-notification', loadNotiRoute);
   app.use('/remove-request', removeRequestRoute);
   app.use('/add-contact', addNewContactRoute);
   app.use('/search-user', searchRoute);
