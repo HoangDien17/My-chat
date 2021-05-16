@@ -5,8 +5,8 @@ let NotificationSchema = new Schema({
   senderId: String,
   receiverId: String,
   type: String,
-  isRead: {type: Boolean, default: false},
-  createdAt: {type: Number, default: Date.now}
+  isRead: { type: Boolean, default: false },
+  createdAt: { type: Number, default: Date.now }
 });
 
 NotificationSchema.statics = {
@@ -16,17 +16,38 @@ NotificationSchema.statics = {
   removeNotificationAddContact(currentId, contactId, type) {
     return this.deleteOne({
       $and: [
-        {"senderId": currentId},
-        {"receiverId": contactId},
-        {"type": type}
+        { "senderId": currentId },
+        { "receiverId": contactId },
+        { "type": type }
       ]
     }).exec();
+  },
+  findNotificationByUser(id, limit) {
+    return this.find({
+      "receiverId": id
+    }).sort({ createdAt: -1 }).limit(limit).exec();
   }
 }
 
 const NOTIFICATION_TYPE = {
   ADD_CONTACT: "add_contact"
 }
+
+const NOTIFICATION_CONTENT = {
+  getContent: (type, avatar, username, userId) => {
+    if (type === NOTIFICATION_TYPE.ADD_CONTACT) {
+      return `<div class="big-border" data-id="${userId}">
+                <div class="avatar-notification">
+                  <img src="/img/avatar/${avatar}" alt="avatar">
+                </div>
+                <div class="content-notifi">
+                  <strong>${username}</strong> đã gửi cho bạn một lời mời kết bạn!
+                </div>
+              </div>`
+    }
+  }
+}
+
 let model = mongoose.model("notification", NotificationSchema);
 
-module.exports = { NOTIFICATION_TYPE, model};
+module.exports = { NOTIFICATION_TYPE, model , NOTIFICATION_CONTENT};

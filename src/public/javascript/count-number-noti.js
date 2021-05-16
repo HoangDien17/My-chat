@@ -1,6 +1,8 @@
 function decreaseNumberNoti (className) {
   let numberNoti = $(`.${className}`).text();
-  numberNoti-=1;
+  if(numberNoti >= 1) {
+    numberNoti-= 1;
+  }
   if(numberNoti === 0) {
     $(`.${className}`).css("display", "none").html("")
   }
@@ -9,7 +11,7 @@ function decreaseNumberNoti (className) {
 
 function increaseNumberNoti (className) {
   let numberNoti = +$(`.${className}`).text();
-  numberNoti+=1;
+  numberNoti+= 1;
   if(numberNoti === 0) {
     $(`.${className}`).css("display", "none").html("")
   }
