@@ -9,9 +9,12 @@ class HomeController {
       let user = req.user
       let friendContacts = await contact.listFriendContact(currentId);
       let notifsByUser = await notification.loadNotification(currentId, limit)
+      let userRequestSenders = await notification.showRequestContact(currentId, limit);
+
+      userRequestSenders = mongooseArrayToObject(userRequestSenders);
       friendContacts = mongooseArrayToObject(friendContacts);
       user = mongooseToObject(user);
-      res.render('home', { layout: 'main', user, friendContacts, notifsByUser});
+      res.render('home', { layout: 'main', user, friendContacts, notifsByUser, userRequestSenders});
     } catch (error) {
       res.status(500).send(error);
     }

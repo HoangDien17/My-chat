@@ -56,9 +56,19 @@ let RemoveRequest = (currentId, contactId) => {
     }
     resolve(true);
   });
-}
+};
 
-let notificationContact = (currentId, contactId) => {
+let AcceptRequestContact = (senderId, receiverId) => {
+  return new Promise(async (resolve, reject) => {
+    let notifiType = NotificationModel.NOTIFICATION_TYPE.ADD_CONTACT;
+    await NotificationModel.model.removeNotificationAddContact(receiverId, senderId, notifiType);
+    await ContactModel.acceptRequestContact(senderId, receiverId);
+    resolve(true);
+  })
+};
+
+
+let NotificationContact = (currentId, contactId) => {
   return new Promise(async (resolve, reject) => {
     let notificationItem = {
       senderId: currentId,
@@ -71,4 +81,11 @@ let notificationContact = (currentId, contactId) => {
   })
 }
 
-module.exports = {findUsersContact, listFriendContact, AddNew, RemoveRequest, notificationContact};
+let UnFriend = (currentId, contactId) => {
+  return new Promise (async (resolve, reject) => {
+    await ContactModel.deleteFriendContact(currentId, contactId);
+    resolve(true);
+  })
+};
+
+module.exports = {findUsersContact, listFriendContact, AddNew, RemoveRequest, NotificationContact, AcceptRequestContact, UnFriend};

@@ -60,6 +60,39 @@ ContactSchema.statics = {
         { "contactId": contactId }
       ]
     }).exec();
+  },
+  acceptRequestContact(currentId, contactId) {
+    return this.findOneAndUpdate(
+      {
+        $and: [
+          { "userId": contactId },
+          { "contactId": currentId }
+        ]
+      }, {"status": true}
+    ).exec()
+  },
+  deleteFriendContact(currentId, contactId) {
+    return this.deleteOne({
+      $and: [
+        {"status": true},
+        {
+          $or: [
+            {
+              $and: [
+                {"userId": currentId},
+                {"contactId": contactId}
+              ]
+            },
+            {
+              $and: [
+                {"userId": contactId},
+                {"contactId": currentId}
+              ]
+            }
+          ]
+        }
+      ]
+    }).exec()
   }
 }
 

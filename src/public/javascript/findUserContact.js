@@ -1,4 +1,3 @@
-var idFriend = $(".list-friend-li").data("id");
 
 function findUserContact() {
   let render = "";
@@ -20,35 +19,17 @@ function findUserContact() {
       render += `</div>`
       render += `</div>`
       $('#px-3').html(render);
-
+      
       // Call add-contact
       addContact();
 
       // Call remove request contact
       removeRequest();
+
       })
     }
   })
 };
-
-function alertUnfriend() {
-  $.confirm({
-    title: 'Thông báo',
-    content: 'Bạn có muốn xóa kết bạn ?',
-    buttons: {
-      "Đồng ý": function () {
-        $.ajax({
-          type: "PUT",
-          url: `/delete-friend/${idFriend}`
-        })
-        $.notify("Hủy kết bạn thành công.", "success");
-      },
-      "Hủy": function () {
-        $.notify("Dừng việc hủy kết bạn !", "warn");
-      },
-    }
-  });
-}
 
 function showContent(classButtonShow, idContentShow, idContentHide1, idContentHide2) {
   $(`${classButtonShow}`).click(function() {
@@ -62,7 +43,27 @@ $(document).ready(function () {
   $(".button-find-user").bind("click", findUserContact);
   $("#input-keyword").bind("keypress", findUserContact);
   // $(".btn-list-friend").bind("click", showListFriend);
-  $(".btn-delete-contact").bind("click", alertUnfriend);
+  $(".btn-delete-contact").bind("click", function() {
+    let idFriend = $(this).data("id");
+    $.confirm({
+      title: 'Thông báo',
+      content: 'Bạn có muốn xóa kết bạn ?',
+      buttons: {
+        "Đồng ý": function () {
+          $.ajax({
+            type: "DELETE",
+            url: "/delete-friend",
+            data: {idDelete: idFriend}
+          })
+          $(".list-friend-ul").find(`li.list-friend-li[data-id = ${idFriend}]`).remove();
+          $.notify("Hủy kết bạn thành công.", "success");
+        },
+        "Hủy": function () {
+          $.notify("Dừng việc hủy kết bạn !", "warn");
+        },
+      }
+    });
+  });
 
   showContent(".btn-list-friend", "#list-friend-id", "#notification-id", "#content-chat-id");
   showContent(".btn-notification", "#notification-id", "#list-friend-id", "#content-chat-id");
