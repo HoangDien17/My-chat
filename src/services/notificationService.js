@@ -12,4 +12,17 @@ let loadNotification = (receivedID, limit) => {
   })
 }
 
-module.exports = {loadNotification};
+let showRequestContact = (receivedID, limit) => {
+  return new Promise(async (resolve, reject) => {
+    let userSender = [];
+    let notifiByUser = await NotificationModel.model.findNotificationByUser(receivedID, limit);
+    notifiByUser.forEach((notification) => {
+      let sender = UserModel.findUserById(notification.senderId);
+      userSender.push(sender)
+    });
+    resolve(await Promise.all(userSender));
+  })
+}
+
+
+module.exports = {loadNotification, showRequestContact};

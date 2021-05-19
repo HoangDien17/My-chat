@@ -4,12 +4,10 @@
   </div>
   <ul class="list-friend-ul">
     {{#each friendContacts as |friendContact|}}
-    <li class="list-friend-li" data-id="{{friendContact._id}}">
+    <li class="list-friend-li" data-id="{{friendContact._id}}" id="list-friend-li">
       <div class="image-contact-item">
         <img id="image-item" src="/img/avatar/{{friendContact.avatar}}" alt="image">
-      </div>
-      <div class="username-contact-item">
-        <p class="p-username">{{friendContact.username}}</p>
+        <h6 class="p-username">{{friendContact.username}}</h6>
       </div>
       <div class="more-option">
         <div class="dropdown">
@@ -18,9 +16,9 @@
             <i class="fas fa-ellipsis-h"></i>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <button class="dropdown-item" type="button" id="button-user" data-toggle="modal" data-target="#information-contact">Xem thông tin</button>
+            <button class="dropdown-item info-contact-user" data-id="{{friendContact._id}}" type="button" id="button-user" data-toggle="modal" data-target="#information-contact">Xem thông tin</button>
             <hr style="witch: 90%">
-            <button class="dropdown-item btn-delete-contact" type="button" id="btn-delete-contact">Xóa bạn</button>
+            <button class="dropdown-item btn-delete-contact" type="button" data-id="{{friendContact._id}}" id="btn-delete-contact">Xóa bạn</button>
           </div>
         </div>
       </div>
@@ -28,4 +26,4 @@
     {{/each}}
   </ul>
 </div>
-    {{>information-contact}}
+{{>infomation-contact}}

@@ -10,13 +10,17 @@ const searchRoute = require('./search');
 const unfriendRoute = require('./unfriend');
 const addNewContactRoute = require('./newContact');
 const removeRequestRoute = require('./removeRequest');
+const addToFriendRoute = require('./addToFriend');
+const infoContactRoute = require('./infoContact');
 
 
 module.exports = (app) => {
+  app.use("/info-contact", infoContactRoute);
+  app.use('/handle-request', addToFriendRoute);
   app.use('/remove-request', removeRequestRoute);
   app.use('/add-contact', addNewContactRoute);
   app.use('/search-user', searchRoute);
-  app.use('/delete-friend/:id', unfriendRoute);
+  app.use('/delete-friend', unfriendRoute);
   app.use('/user/update-info', updateInfoRoute);
   app.use('/user/update-avatar', updateAvatarRoute);
   app.use('/logout', logOutRoute);
