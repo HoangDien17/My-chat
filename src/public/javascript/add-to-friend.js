@@ -7,11 +7,8 @@
         type: "PUT",
         data: {id: targetId},
         success: function(data) {
-           if(data.success) {
-             // Client gửi dữ liệu lên server với sự kiện add-to-friend
-            socket.emit("add-to-friend", {contactId: targetId});
-           }
-           
+          // Client gửi dữ liệu lên server với sự kiện add-to-friend
+        socket.emit("add-to-friend", {contactId: targetId});
         }
       });
       let userItemContact = $(".content-request-contact").find(`div.User-Request-Border[data-id = ${targetId}]`);

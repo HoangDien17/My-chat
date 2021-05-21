@@ -10,7 +10,7 @@ class HomeController {
       let friendContacts = await contact.listFriendContact(currentId);
       let notifsByUser = await notification.loadNotification(currentId, limit)
       let userRequestSenders = await notification.showRequestContact(currentId, limit);
-
+      
       userRequestSenders = mongooseArrayToObject(userRequestSenders);
       friendContacts = mongooseArrayToObject(friendContacts);
       user = mongooseToObject(user);
