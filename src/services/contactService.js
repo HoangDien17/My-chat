@@ -83,9 +83,30 @@ let NotificationContact = (currentId, contactId) => {
 
 let UnFriend = (currentId, contactId) => {
   return new Promise (async (resolve, reject) => {
-    await ContactModel.deleteFriendContact(currentId, contactId);
-    resolve(true);
+    let unfriend = await ContactModel.deleteFriendContact(currentId, contactId);
+    resolve(unfriend);
   })
 };
 
-module.exports = {findUsersContact, listFriendContact, AddNew, RemoveRequest, NotificationContact, AcceptRequestContact, UnFriend};
+let RejectRequestContact = (senderId, receiverId) => {
+  return new Promise(async (resolve, reject) => {
+    let typeNoti = NotificationModel.NOTIFICATION_TYPE.ADD_CONTACT;
+    await NotificationModel.model.removeNotificationAddContact(senderId, receiverId, typeNoti);
+    let rejectReq = await ContactModel.rejectRequestContact(senderId, receiverId);
+    resolve(rejectReq);
+  })
+}
+
+let findAllRequestContact = (currentId) => {
+  return new Promise(async (resolve, reject) => {
+    let contactRequest = await ContactModel.findContactByCurrentId(currentId);
+    let allRequestContact = [];
+    contactRequest.forEach(item => {
+      let infoContact = UserModel.findUserById(item.contactId);
+      allRequestContact.push(infoContact)
+    });
+    resolve(await Promise.all(allRequestContact));
+  })
+};
+
+module.exports = {findUsersContact, listFriendContact, AddNew, RemoveRequest, NotificationContact, AcceptRequestContact, UnFriend, RejectRequestContact, findAllRequestContact};

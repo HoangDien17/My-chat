@@ -12,9 +12,13 @@ const addNewContactRoute = require('./newContact');
 const removeRequestRoute = require('./removeRequest');
 const addToFriendRoute = require('./addToFriend');
 const infoContactRoute = require('./infoContact');
+const rejectRequestRoute = require('./rejectRequest');
+const loadRequestContactRoute = require('./loadRequestContact');
 
 
 module.exports = (app) => {
+  app.use("/load-request-contact", loadRequestContactRoute);
+  app.use("/reject-request-contact", rejectRequestRoute);
   app.use("/info-contact", infoContactRoute);
   app.use('/handle-request', addToFriendRoute);
   app.use('/remove-request', removeRequestRoute);

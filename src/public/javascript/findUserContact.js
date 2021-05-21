@@ -9,7 +9,7 @@ function findUserContact() {
     success: function(data) {
       // $('#px-3').html($(data).find('#px-3')); 
       data.forEach(item => {
-      render += `<div class="card card-search-contact">`
+      render += `<div class="card card-search-contact" data-id="${item._id}">`
       render += `<img class="card-img-top" src="/img/avatar/${item.avatar}" alt="Card image cap">`
       render += `<div class="card-body" style="padding-bottom: 10px;">`
       render += `<h5 class="card-title">${item.username}</h5>`
@@ -24,7 +24,7 @@ function findUserContact() {
       addContact();
 
       // Call remove request contact
-      removeRequest();
+      removeRequestOne();
 
       })
     }

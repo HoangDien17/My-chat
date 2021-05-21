@@ -9,6 +9,18 @@ function addContact() {
         $('#px-3').find(`button.destroy-contact-someone[data-uid = ${targetId}]`).css("display", "inline-block");
         increaseNumberNoti("number-noti-confirm");
         socket.emit("add-new-contact", {contactId: targetId});  // Client gửi dữ liệu lên server
+
+        let infoUserContact = ` <div class="User-Request-Border" data-id="${data.infoContact._id}">
+                                  <div class="infor-user-request">
+                                    <img src="/img/avatar/${data.infoContact.avatar}" alt="">
+                                    <h6>${data.infoContact.username}</h6>
+                                  </div>
+                                  <div class="button-request-handling">
+                                    <button type="button" class="btn btn-danger btn-destroy-request-contact btn-design" id="btn-destroy-request-contact" data-id="${data.infoContact._id}">Hủy yêu cầu</button>
+                                  </div>
+                                </div> `
+        $(".load-all-request-contact").prepend(infoUserContact);
+        removeRequestTwo();
       }
     })
   })
@@ -32,7 +44,7 @@ socket.on("response-add-new-contact", function(user) {
                               <h6>${user.username}</h6>
                             </div>
                             <div class="button-request-handling">
-                              <button type="button" class="btn btn-primary accept-request-contact" id="accept-request-contact" data-id="${user.id}" >Đồng ý</button>
+                              <button type="button" class="btn btn-primary accept-request-contact btn-design" id="accept-request-contact" data-id="${user.id}" >Đồng ý</button>
                               <button type="button" class="btn btn-cancel-request-contact" id="btn-cancel-request-contact" data-id="${user.id}"><i class="fas fa-times-circle"></i></button>
                             </div>
                           </div>`
@@ -42,4 +54,6 @@ socket.on("response-add-new-contact", function(user) {
   increaseNumberNoti("badge-notification-add-contact");
   increaseNumberNoti("notification-message-badge");
   increaseNumberNoti("number-noti-sent");
+
+  rejectRequestContact();
 });

@@ -93,6 +93,23 @@ ContactSchema.statics = {
         }
       ]
     }).exec()
+  },
+  rejectRequestContact(senderId, receivedId) {
+    return this.deleteOne({
+      $and: [
+        {"status": false},
+        {"userId": senderId},
+        {"contactId": receivedId}
+      ]
+    }).exec()
+  },
+  findContactByCurrentId(currentId) {
+    return this.find({
+      $and: [
+        {"status": false},
+        {"userId": currentId}
+      ]
+    }).exec()
   }
 }
 

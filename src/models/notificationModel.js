@@ -28,7 +28,6 @@ NotificationSchema.statics = {
     }).sort({ createdAt: -1 }).limit(limit).exec();
   }
 }
-
 const NOTIFICATION_TYPE = {
   ADD_CONTACT: "add_contact"
 }
