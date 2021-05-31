@@ -287,6 +287,7 @@ input:focus {
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  position: relative;
 }
 .list-friend-ul{
   padding: 10px;
@@ -460,4 +461,41 @@ input:focus {
   position: fixed;
   display: block;
   background: rgb(243, 241, 241);
+}
+
+/* Status contact*/
+.status-contact-item {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  top: 5px;
+  right: 5px;
+  background: green;
+  border: white 1px solid;
+}
+
+.online {
+  background: green;
+}
+.busy {
+  background: red;
+}
+.offline {
+  background: gray;
+}
+
+/* Group chat*/
+.modal-content-chat-group {
+  width: 500px;
+  height: 600px;
+  padding: 20px
+}
+
+.input-group-name {
+  text-align: left;
+  margin-top: 10px;
+}
+.list-friend-to-add {
+  text-align: left;
 }

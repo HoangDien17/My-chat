@@ -4,7 +4,7 @@ let addListFriend = (io) => {
   io.on("connection", (socket) => {
     let currentId = socket.request.user._id;
     clients[currentId] ? clients[currentId].push(socket.id) : (clients[currentId] = [socket.id]);
-    
+
     socket.on("add-to-friend", (data) => {
       let currentUser = {
         id: socket.request.user._id,
