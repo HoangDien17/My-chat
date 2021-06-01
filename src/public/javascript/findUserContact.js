@@ -73,6 +73,7 @@ function deleteFriend() {
 // Client lắng nghe theo sự kiện response-delete-contact
 socket.on("response-delete-contact", function(userContact) {
   $("ul.list-friend-ul").find(`li.list-friend-li[data-id = ${userContact.id}]`).remove();
+  decreaseNumberNoti("notification-list-friend-contact");
 })
 
 $(document).ready(function () {

@@ -35,6 +35,9 @@ function addToFriend() {
         // let userContact = userItemContact.get(0).outerHTML();                     
         $(".list-friend-ul").prepend(userRender);
 
+        // Call function delete friend
+        deleteFriend();
+
         increaseNumberNoti("notification-list-friend-contact");
         decreaseNumberNoti("number-noti-sent");
         decreaseNumberNoti("notification-message-badge");
@@ -63,7 +66,6 @@ socket.on("response-add-to-friend", function (userInfo) {
   increaseNumberNoti("notification-message-badge");
   $(".load-all-request-contact").find(`div.User-Request-Border[data-id = ${userInfo.id}]`).remove();
   $(".px-3").find(`div.card-search-contact[data-id = ${userInfo.id}]`).remove();
-  deleteFriend();
 
   // Thêm vào danh bạ
   let itemToFriend = `
