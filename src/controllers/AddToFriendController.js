@@ -4,8 +4,8 @@ let AddToFriendController = async (req, res) => {
   try {
     let currentId = req.user._id;
     let contactId = req.body.id;
-    let resultAcceptRequest = await contact.AcceptRequestContact(currentId, contactId);
-    res.status(200).json({success: !!resultAcceptRequest});
+    let result = await contact.AcceptRequestContact(currentId, contactId);
+    res.status(200).json({success: !!result.resultAcceptRequest, user: result.userReceiver});
   } catch (error) {
     res.status(500).send(error)
   }
