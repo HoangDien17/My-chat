@@ -47,4 +47,5 @@ socket.on("response-remove-request-contact", function(user) {
   decreaseNumberNoti("badge-notification-add-contact");
   decreaseNumberNoti("notification-message-badge");
   decreaseNumberNoti("number-noti-sent");
+  $("ul.list-friend-ul").find(`li.list-friend-li[data-id = ${user.id}]`).remove();
 })

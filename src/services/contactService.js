@@ -62,8 +62,9 @@ let AcceptRequestContact = (senderId, receiverId) => {
   return new Promise(async (resolve, reject) => {
     let notifiType = NotificationModel.NOTIFICATION_TYPE.ADD_CONTACT;
     await NotificationModel.model.removeNotificationAddContact(receiverId, senderId, notifiType);
+    let userReceiver = await UserModel.findUserById(receiverId);
     let resultAcceptRequest = await ContactModel.acceptRequestContact(senderId, receiverId);
-    resolve(resultAcceptRequest);
+    resolve({resultAcceptRequest, userReceiver});
   })
 };
 
