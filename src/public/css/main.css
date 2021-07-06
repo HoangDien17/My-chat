@@ -366,6 +366,7 @@ input:focus {
 }
 .content-notifi{
   padding: 10px;
+  color: #0075ff;
 }
 .title-notifi {
   text-align: center;
@@ -498,4 +499,36 @@ input:focus {
 }
 .list-friend-to-add {
   text-align: left;
+}
+
+.image-item-list-contact {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: rgb(199, 197, 197) 1px solid;
+  margin: 0px 20px;
+}
+
+#flexCheckDefault {
+  justify-content: right;
+}
+
+.check-iteam {
+  align-items: center;
+  justify-items: center;
+}
+
+.item-list-contact {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.list-contact-check {
+  align-items: center;
+  padding: 10px
+}
+input.form-check-input {
+  height: 15px;
+  width: 15px;
 }

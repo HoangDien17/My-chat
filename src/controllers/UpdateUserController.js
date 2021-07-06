@@ -2,7 +2,7 @@ const multer = require('multer');
 const {app} = require('../config/app');
 const {transValidation, transSuccess} = require('../../lang/vi');
 const { v4: uuidv4 } = require('uuid');
-const userUpdate = require('../services/userSevices');
+const User = require('../services/userSevices');
 const fsExtra = require('fs-extra');
 const { check, validationResult } = require('express-validator');
 
@@ -38,7 +38,7 @@ let updateAvatar = (req, res) => {
         avatar: req.file.filename,
         updatedAt: Date.now()
       }
-      let updateUser = await userUpdate(req.user._id, userAvatarItem);
+      let updateUser = await User.userUpdate(req.user._id, userAvatarItem);
       // remove avatar cũ trong folder public/img
       await fsExtra.remove(`${app.avatar_directory}/${updateUser.avatar}`);
       /* Chú ý: sau khi update thành công , return vẫn trả về dữ liệu cũ. */
@@ -67,7 +67,7 @@ let updateInfo = async (req, res) => {
     }
   try {
     let userInfoItem = req.body;
-    await userUpdate(req.user._id, userInfoItem);
+    await User.userUpdate(req.user._id, userInfoItem);
     let result = {
       message: transSuccess.info_user_updated,
     }

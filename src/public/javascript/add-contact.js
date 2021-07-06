@@ -56,4 +56,5 @@ socket.on("response-add-new-contact", function(user) {
   increaseNumberNoti("number-noti-sent");
   addToFriend();
   rejectRequestContact();
+  isRead();
 });

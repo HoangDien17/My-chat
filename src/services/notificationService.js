@@ -24,6 +24,19 @@ let showRequestContact = (receivedID, limit) => {
   })
 }
 
+let countNotiByUser = (Userid) => {
+  return new Promise(async (resolve, reject) => {
+    let resultCount = await NotificationModel.model.countNotificationByUser(Userid);
+    resolve(resultCount);
+  })
+}
+
+let isReadNoti = (senderId, receiverId) => {
+  return new Promise (async (resolve, reject) => {
+    let updateStatus = await NotificationModel.model.updateStatusNoti(senderId, receiverId);
+    resolve(updateStatus);
+  })
+}
 
 
-module.exports = {loadNotification, showRequestContact};
+module.exports = {loadNotification, showRequestContact, countNotiByUser, isReadNoti};

@@ -1,3 +1,6 @@
+const express = require('express');
+const router = express.Router();
+
 const loginRoute = require('./login');
 const signUpRoute = require('./signup');
 const homeRoute = require('./home');
@@ -14,9 +17,13 @@ const addToFriendRoute = require('./addToFriend');
 const infoContactRoute = require('./infoContact');
 const rejectRequestRoute = require('./rejectRequest');
 const loadRequestContactRoute = require('./loadRequestContact');
+const getContactRoute = require('./getContact');
+
+const ajaxRouter = require('./api-ajax-router');
 
 
 module.exports = (app) => {
+  app.use("/get-contact", getContactRoute);
   app.use("/load-request-contact", loadRequestContactRoute);
   app.use("/reject-request-contact", rejectRequestRoute);
   app.use("/info-contact", infoContactRoute);
@@ -33,4 +40,7 @@ module.exports = (app) => {
   app.use('/login-register', openAppRoute);
   app.use('/', checkActiveRoute);
   app.use('/', homeRoute);
+
+  app.use('/', router);
+  ajaxRouter(router);
 }

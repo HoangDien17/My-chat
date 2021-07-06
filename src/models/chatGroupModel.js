@@ -14,4 +14,10 @@ let ChatGroupSchema = new Schema({
   deletedAt: {type: Number, default: null},
 });
 
+ChatGroupSchema.statics = {
+  createNewChatGroup(item) {
+    return this.create(item);
+  }
+}
+
 module.exports = mongoose.model("chat-group", ChatGroupSchema);
