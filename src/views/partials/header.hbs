@@ -22,7 +22,11 @@
     <button class="btn-list-friend item" data-id ="{{user._id}}"><i class="far fa-address-book"></i></button><span class="badge badge-danger notification-badge two notification-list-friend-contact"></span>
   </div>
   <div class="notification toolbar">
+    {{#ifCond countNotiUnread '!==' 0}}
+    <button class="btn-notification item"><i class="far fa-bell"></i></button><span class="badge badge-danger notification-badge three notification-message-badge">{{{countNotiUnread}}}</span>
+    {{else}}
     <button class="btn-notification item"><i class="far fa-bell"></i></button><span class="badge badge-danger notification-badge three notification-message-badge"></span>
+    {{/ifCond}}
   </div>
 </div>
 

@@ -70,6 +70,23 @@ function deleteFriend() {
   });
 }
 
+// Xử lý notification chưa đọc 
+ function isRead () {
+   $("div.big-border").bind("click", function() {
+     let confirmId = $(this).data("id");
+     $.ajax({
+       type: "PUT",
+       url: "/ajax/isRead",
+       data: {confirmId: confirmId}
+     }).done(function(data) {
+       $(".message-all").find(`div.big-border[data-id = ${confirmId}]`).find("div.content-notifi").css("color", "black")
+       decreaseNumberNoti("badge-notification-add-contact");
+       decreaseNumberNoti("notification-message-badge");
+       decreaseNumberNoti("number-noti-confirm")
+     })
+   })
+ }
+
 // Client lắng nghe theo sự kiện response-delete-contact
 socket.on("response-delete-contact", function(userContact) {
   $("ul.list-friend-ul").find(`li.list-friend-li[data-id = ${userContact.id}]`).remove();
@@ -81,6 +98,7 @@ $(document).ready(function () {
   $("#input-keyword").bind("keypress", findUserContact);
   // $(".btn-list-friend").bind("click", showListFriend);
   deleteFriend();
+  isRead();
 
   showContent(".btn-list-friend", "#list-friend-id", "#notification-id", "#content-chat-id");
   showContent(".btn-notification", "#notification-id", "#list-friend-id", "#content-chat-id");

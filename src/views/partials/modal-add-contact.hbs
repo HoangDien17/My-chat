@@ -10,7 +10,11 @@
           <h6 class="text-muted" data-button="2">Đang chờ xác nhận<span class="badge badge-info badge-notification number-noti-confirm" data-button="2"></span></h6>
         </div>
         <div class="tabs" id="tab03">
+          {{#ifCond countNotiUnread '!==' 0}}
+          <h6 class="text-muted" data-button="3">Yêu cầu kết bạn<span class="badge badge-danger badge-notification number-noti-sent" data-button="3">{{{countNotiUnread}}}</span></h6>
+          {{else}}
           <h6 class="text-muted" data-button="3">Yêu cầu kết bạn<span class="badge badge-danger badge-notification number-noti-sent" data-button="3"></span></h6>
+          {{/ifCond}}
         </div>
       </div>
       <div class="line"></div>

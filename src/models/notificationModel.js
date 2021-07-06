@@ -26,6 +26,19 @@ NotificationSchema.statics = {
     return this.find({
       "receiverId": id
     }).sort({ createdAt: -1 }).limit(limit).exec();
+  },
+  countNotificationByUser(id) {
+    return this.countDocuments({
+      $and: [{
+        "receiverId": id
+      }, {
+        "isRead": false}]
+    }).exec()
+  },
+  updateStatusNoti(senderId, receiverId) {
+    return this.findOneAndUpdate({
+      $and: [{"senderId": senderId}, {"receiverId": receiverId}]
+    }, {"isRead": true}).exec()
   }
 }
 const NOTIFICATION_TYPE = {
